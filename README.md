@@ -32,6 +32,14 @@
         <li><a href="#how-to-use">How to use</a></li>
       </ul>
     </li>
+    <li>
+      <a href="#tutorials">Tutorials</a>
+      <ul>
+        <li><a href="#counter">Counter</a></li>
+        <li><a href="#infinite-list">Infinite List</a></li>
+        <li><a href="#login">Login</a></li>
+      </ul>
+    </li>
     <li><a href="#contributing">Contributing</a></li>
 <!--     <li><a href="#acknowledgments">Acknowledgments</a></li> -->
   </ol>
@@ -143,6 +151,146 @@ Run `flutter run` to start the project
 $ flutter run
 ```
 <p align="right">(<a href="#top">back to top</a>)</p>
+
+## Tutorials
+### Counter
+Overview
+* BlocObserver
+* Cubit vs Bloc
+
+| Cubit | Bloc |
+| ------------------------ | ----------------------------------------------------------- |
+| When creating a Cubit, we have to define the state and the functions to trigger state changes | When creating a Bloc, we have to define the state, event and event handler |
+| Simpler as less code is involved | More traceable as we know the event that triggered those changes |
+
+Learnings
+<div>
+  <ul>
+    <li>
+      CounterCubit
+      <ul>
+        <li>Does not specify the event that triggers the function for the state to change, rather it only exposes the function to emit the new changes</li>
+        <li>Can be good if only one event is responsible for a widget to redraw and state change does not require complex logic</li>
+      </ul>
+    </li>
+    <li>
+      CounterView
+      <ul>
+        <li>Button press does not dispatch an event to the intermediary to decide how to change the state but rather it calls the CounterCubit methods straight which immediately accesses and outputs the new state</li>
+      </ul>
+    </li>
+    <li>
+      BlocObserver
+      <ul>
+        <li>Responds to all changes even if there are more than one Cubit across the App managing different states, such as handling all reported errors globally</li>
+        <li>Created at the root widget</li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+### Infinite List
+Overview
+* Equatable
+* Adding events
+* Defining states
+* Transition
+
+Learnings
+<div>
+  <ul>
+    <li>
+      PostBloc
+      <ul>
+        <li>Responds to PostFetched, which is a type of PostEvent, using an event handler</li>
+        <li>Emits the PostStates which tells the presentation layer what to do</li>
+        <li>PostEvent and PostState extends Equatable so that we can directly compare states and not rebuild the widget if the same state occurs; objects with the same value have different hashcode internally</li>
+      </ul>
+    </li>
+    <li>
+      PostsPage
+      <ul>
+        <li>Contains an instance of PostBloc that adds PostFetched event which triggers on creation and renders PostsList</li>
+      </ul>
+    </li>
+    <li>
+      PostsList
+      <ul>
+        <li>Uses a BlocBuilder to rebuild the view depending on the state, and is hooked up to PostBloc and adds a PostFetched event when it reaches the bottom of the scroll</li>
+        <li>Instead of using switch case, can also try using buildWhen() which rebuilds the view when the current state is PostStatus.success</li>
+      </ul>
+    </li>
+    <li>
+      BlocObserver
+      <ul>
+        <li>onTransition can be used in BlocObserver to log the changes in state</li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+### Login
+Overview
+* Stream
+* RepositoryProvider
+
+Learnings
+<div>
+  <ul>
+    <li>
+      UserRepository
+      <ul>
+        <li>Exposes a method getUser() which will retrieve the current user</li>
+        <li>Wrapped with RepositoryProvider to provide a repository for all the Blocs</li>
+      </ul>
+    </li>
+    <li>
+      AuthenticationRepository
+      <ul>
+        <li>Exposes a stream of AuthenticationStatus updates</li>
+        <li>Report real-time updates to all subscribers</li>
+        <li>Wrapped with RepositoryProvider to provide a repository for all the Blocs</li>
+      </ul>
+    </li>
+    <li>
+      AuthenticationBloc
+      <ul>
+        <li>Reacts to changes in the authentication state and emit states to the presentation layer</li>
+        <li>Has a dependency on AuthenticationRepository and UserRepository and subscribes to the status stream of the AuthenticationRepository and adds AuthenticationStatusChanged event internally in response to a new AuthenticationStatus</li>
+      </ul>
+    </li>
+    <li>
+      LoginBloc
+      <ul>
+        <li>Login state and events are decoupled from Authentication</li>
+      </ul>
+    </li>
+    <li>
+      Presentation Layer
+      <ul>
+        <li>Splash page: splash screen while bloc determines whether user is logged in</li>
+        <li>Home page: navigates users there once they are logged in</li>
+        <li>Login page: holds Login form</li>
+        <li>Login form: handle user login input</li>
+      </ul>
+    </li>
+    <li>
+      MultiBlocProvider
+      <ul>
+        <li>Can be used to initialize all the Blocs</li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
 
 <!-- CONTRIBUTING -->
 ## Contributing
