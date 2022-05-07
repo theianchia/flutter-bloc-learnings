@@ -109,6 +109,11 @@
 * Infinite List
 * Login
 
+<div>
+  <img src="images/counter.png" alt="Logo" width='200px'>
+  <img src="images/list.png" alt="Logo" width='200px'>
+  <img src="images/login.png" alt="Logo" width='200px'>
+</div>
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
