@@ -3,7 +3,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <img src="images/overview.png" alt="Logo" width="80" height="80">
+  <img src="images/overview.png" alt="Logo">
   <p>
     Learnings from a couple Bloc tutorials!
   </p>
@@ -19,6 +19,10 @@
       <a href="#about-the-project">About The Project</a>
       <ul>
         <li><a href="#built-with">Built With</a></li>
+        <li><a href="#introduction">Introduction</a></li>
+        <li><a href="#bloc-widgets">Bloc Widgets</a></li>
+        <li><a href="#using-bloc">Using Bloc</a></li>
+        <li><a href="#tutorials-attempted">Tutorials Attempted</a></li>
       </ul>
     </li>
     <li>
@@ -46,6 +50,9 @@
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ### Introduction
+<div>
+  <img src="images/flow.png" alt="Logo" width='50%'>
+</div>
 <div>
   <ul>
     <li>Bloc stands for Business Logic Component</li>
