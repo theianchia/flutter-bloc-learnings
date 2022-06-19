@@ -108,9 +108,9 @@
 * Login
 
 <div>
-  <img src="images/counter.png" alt="counter" width='200px'>
-  <img src="images/list.png" alt="list" width='200px'>
-  <img src="images/login.png" alt="login" width='200px'>
+  <img src="images/counter.png" alt="counter" width='20%'>
+  <img src="images/list.png" alt="list" width='20%'>
+  <img src="images/login.png" alt="login" width='20%'>
 </div>
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -157,7 +157,11 @@ $ flutter run
 
 ## Tutorials
 ### Counter
-Overview
+<div>
+  <img src="images/counter.gif" alt="counter gif" width='30%'>
+</div>
+
+#### Overview
 * BlocObserver
 * Cubit vs Bloc
 
@@ -166,7 +170,7 @@ Overview
 | When creating a Cubit, we have to define the state and the functions to trigger state changes | When creating a Bloc, we have to define the state, event and event handler |
 | Simpler as less code is involved | More traceable as we know the event that triggered those changes |
 
-Learnings
+#### Learnings
 <div>
   <ul>
     <li>
@@ -196,13 +200,17 @@ Learnings
 
 
 ### Infinite List
-Overview
+<div>
+  <img src="images/list.gif" alt="list" width='30%'>
+</div>
+
+#### Overview
 * Equatable
 * Adding events
 * Defining states
 * Transition
 
-Learnings
+#### Learnings
 <div>
   <ul>
     <li>
@@ -239,11 +247,15 @@ Learnings
 
 
 ### Login
-Overview
+<div>
+  <img src="images/login.gif" alt="login" width='30%'>
+</div>
+
+#### Overview
 * Stream
 * RepositoryProvider
 
-Learnings
+#### Learnings
 <div>
   <ul>
     <li>
