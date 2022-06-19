@@ -165,12 +165,12 @@ $ flutter run
 * BlocObserver
 * Cubit vs Bloc
 
+#### Learnings
 | Cubit | Bloc |
 | ------------------------ | ----------------------------------------------------------- |
 | When creating a Cubit, we have to define the state and the functions to trigger state changes | When creating a Bloc, we have to define the state, event and event handler |
 | Simpler as less code is involved | More traceable as we know the event that triggered those changes |
 
-#### Learnings
 <div>
   <ul>
     <li>
